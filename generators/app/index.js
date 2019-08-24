@@ -1,31 +1,29 @@
-"use strict";
-const Generator = require("yeoman-generator");
-const chalk = require("chalk");
-const yosay = require("yosay");
-const glob = require("glob");
-const { resolve } = require("path");
-const remote = require("yeoman-remote");
-const yoHelper = require("yeoman-generator-helper");
-const replace = require("replace-in-file");
+'use strict';
+const Generator = require('yeoman-generator');
+const chalk = require('chalk');
+const yosay = require('yosay');
+const glob = require('glob');
+const { resolve } = require('path');
+const remote = require('yeoman-remote');
+const yoHelper = require('yeoman-generator-helper');
+const replace = require('replace-in-file');
 
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
-    this.log(
-      yosay(`Welcome to the stunning ${chalk.red("generator-gulp")} generator!`)
-    );
+    this.log(yosay(`Welcome to the stunning ${chalk.red('generator-gulp')} generator!`));
 
     const prompts = [
       {
-        type: "input",
-        name: "project_name",
-        message: "Your project_name (eg: like this `react-button` )?",
+        type: 'input',
+        name: 'project_name',
+        message: 'Your project_name (eg: like this `react-button` )?',
         default: yoHelper.discoverRoot
       },
       {
-        type: "input",
-        name: "description",
-        message: "Your description?"
+        type: 'input',
+        name: 'description',
+        message: 'Your description?'
       }
     ];
 
@@ -41,14 +39,11 @@ module.exports = class extends Generator {
   writing() {
     const done = this.async();
     remote(
-      "afeiship",
-      "boilerplate-gulp",
+      'afeiship',
+      'boilerplate-gulp',
       function(err, cachePath) {
         // copy files:
-        this.fs.copy(
-          glob.sync(resolve(cachePath, "{**,.*}")),
-          this.destinationPath()
-        );
+        this.fs.copy(glob.sync(resolve(cachePath, '{**,.*}')), this.destinationPath());
         done();
       }.bind(this)
     );
@@ -56,7 +51,7 @@ module.exports = class extends Generator {
 
   end() {
     const { project_name, description } = this.props;
-    const files = glob.sync(resolve(this.destinationPath(), "{**,.*}"));
+    const files = glob.sync(resolve(this.destinationPath(), '{**,.*}'));
 
     replace.sync({
       files,
