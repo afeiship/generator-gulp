@@ -11,7 +11,9 @@ const replace = require('replace-in-file');
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
-    this.log(yosay(`Welcome to the stunning ${chalk.red('generator-gulp')} generator!`));
+    this.log(
+      yosay(`Welcome to the stunning ${chalk.red('generator-gulp')} generator!`)
+    );
 
     const prompts = [
       {
@@ -43,7 +45,10 @@ module.exports = class extends Generator {
       'boilerplate-gulp',
       function(err, cachePath) {
         // copy files:
-        this.fs.copy(glob.sync(resolve(cachePath, '{**,.*}')), this.destinationPath());
+        this.fs.copy(
+          glob.sync(resolve(cachePath, '{**,.*}')),
+          this.destinationPath()
+        );
         done();
       }.bind(this)
     );
