@@ -5,7 +5,7 @@ const yosay = require('yosay');
 const glob = require('glob');
 const { resolve } = require('path');
 const remote = require('yeoman-remote');
-const yoHelper = require('yeoman-generator-helper');
+const yoHelper = require('@feizheng/yeoman-generator-helper');
 const replace = require('replace-in-file');
 
 module.exports = class extends Generator {
@@ -60,7 +60,10 @@ module.exports = class extends Generator {
 
     replace.sync({
       files,
-      from: [/boilerplate-gulp-description/g, /boilerplate-gulp/g],
+      from: [
+        /boilerplate-gulp-description/g,
+        /boilerplate-gulp/g
+      ],
       to: [description, project_name]
     });
   }
