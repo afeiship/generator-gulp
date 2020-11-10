@@ -1,5 +1,5 @@
 {
-  "name": "@feizheng/generator-gulp",
+  "name": "@jswork/generator-gulp",
   "version": "1.0.0",
   "description": "Yeoman generator for gulp.",
   "homepage": "https://github.com/afeiship/generator-gulp",
@@ -13,9 +13,11 @@
   ],
   "main": "generators/index.js",
   "keywords": [
+    "yeoman",
+    "yo",
+    "generator",
     "gulp",
-    "task",
-    "yeoman-generator"
+    "task"
   ],
   "devDependencies": {
     "yeoman-test": "^1.7.0",
