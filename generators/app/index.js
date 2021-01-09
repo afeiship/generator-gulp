@@ -5,8 +5,10 @@ const yosay = require('yosay');
 const glob = require('glob');
 const { resolve } = require('path');
 const remote = require('yeoman-remote');
-const yoHelper = require('@feizheng/yeoman-generator-helper');
+const yoHelper = require('@jswork/yeoman-generator-helper');
 const replace = require('replace-in-file');
+
+require('@jswork/next-registry-choices');
 
 module.exports = class extends Generator {
   prompting() {
@@ -16,6 +18,18 @@ module.exports = class extends Generator {
     );
 
     const prompts = [
+      {
+        type: 'scope',
+        name: 'scope',
+        message: 'Your scope (eg: @babel )?',
+        default: 'jswork'
+      },
+      {
+        type: 'list',
+        name: 'registry',
+        message: 'Your registry',
+        choices: nx.RegistryChoices.gets()
+      },
       {
         type: 'input',
         name: 'project_name',
@@ -29,29 +43,21 @@ module.exports = class extends Generator {
       }
     ];
 
-    return this.prompt(prompts).then(
-      function(props) {
-        // To access props later use this.props.someAnswer;
-        this.props = props;
-        yoHelper.rewriteProps(props);
-      }.bind(this)
-    );
+    return this.prompt(prompts).then((props) => {
+      this.props = props;
+      yoHelper.rewriteProps(props);
+    });
   }
 
   writing() {
     const done = this.async();
-    remote(
-      'afeiship',
-      'boilerplate-gulp',
-      function(err, cachePath) {
-        // copy files:
-        this.fs.copy(
-          glob.sync(resolve(cachePath, '{**,.*}')),
-          this.destinationPath()
-        );
-        done();
-      }.bind(this)
-    );
+    remote('afeiship', 'boilerplate-gulp', (_, cachePath) => {
+      this.fs.copy(
+        glob.sync(resolve(cachePath, '{**,.*}')),
+        this.destinationPath()
+      );
+      done();
+    });
   }
 
   end() {
@@ -60,10 +66,7 @@ module.exports = class extends Generator {
 
     replace.sync({
       files,
-      from: [
-        /boilerplate-gulp-description/g,
-        /boilerplate-gulp/g
-      ],
+      from: [/boilerplate-gulp-description/g, /boilerplate-gulp/g],
       to: [description, project_name]
     });
   }
