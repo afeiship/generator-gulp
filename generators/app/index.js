@@ -52,7 +52,7 @@ module.exports = class extends Generator {
   writing() {
     const done = this.async();
     remote('afeiship', 'boilerplate-gulp', (_, cachePath) => {
-      this.fs.copy(
+      this.fs.copyTpl(
         glob.sync(resolve(cachePath, '{**,.*}')),
         this.destinationPath()
       );
@@ -61,13 +61,17 @@ module.exports = class extends Generator {
   }
 
   end() {
-    const { project_name, description } = this.props;
+    const { project_name, description, scope } = this.props;
     const files = glob.sync(resolve(this.destinationPath(), '{**,.*}'));
 
     replace.sync({
       files,
-      from: [/boilerplate-gulp-description/g, /boilerplate-gulp/g],
-      to: [description, project_name]
+      from: [
+        /boilerplate-gulp-description/g,
+        /boilerplate-gulp/g,
+        /boilerplate-scope/g
+      ],
+      to: [description, project_name, scope]
     });
   }
 };
