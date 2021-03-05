@@ -54,7 +54,8 @@ module.exports = class extends Generator {
     remote('afeiship', 'boilerplate-gulp', (_, cachePath) => {
       this.fs.copyTpl(
         glob.sync(resolve(cachePath, '{**,.*}')),
-        this.destinationPath()
+        this.destinationPath(),
+        this.props
       );
       done();
     });
