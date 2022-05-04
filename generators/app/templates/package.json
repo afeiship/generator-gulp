@@ -1,0 +1,33 @@
+{
+  "name": "@<%= scope %>/<%= project_name %>",
+  "version": "1.0.0",
+  "description": "<%= description %>",
+  "homepage": "https://js.work",
+  "author": {
+    "name": "afei",
+    "email": "1290657123@qq.com"
+  },
+  "scripts": {
+    "build": "gulp",
+    "release": "release-it"
+  },
+  "main": "dist/index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@jswork/gulp-pkg-header": "^1.0.1",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-header": "^2.0.9",
+    "gulp-ignore": "^3.0.0",
+    "gulp-load-plugins": "^2.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-size": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "release-it": "^14.14.3",
+    "uglify-save-license": "^0.4.1"
+  },
+  "publishConfig": {
+    "access": "<%= registry.access %>",
+    "registry": "<%= registry.publish %>"
+  }
+}
