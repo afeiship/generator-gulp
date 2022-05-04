@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "gulp",
+    "watch": "gulp watch",
     "release": "release-it"
   },
   "main": "dist/index.js",

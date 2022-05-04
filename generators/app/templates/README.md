@@ -1,5 +1,5 @@
-# boilerplate-gulp
-> boilerplate-gulp-description
+# <%= project_name %>
+> <%= description %>
 
 [![version][version-image]][version-url]
 [![license][license-image]][license-url]
@@ -8,20 +8,20 @@
 
 ## installation
 ```shell
-npm install @boilerplate-scope/boilerplate-gulp
+npm install @<%= scope %>/<%= project_name %>
 ```
 
 ## license
-Code released under [the MIT license](https://github.com/afeiship/boilerplate-gulp/blob/master/LICENSE.txt).
+Code released under [the MIT license](https://github.com/afeiship/<%= project_name %>/blob/master/LICENSE.txt).
 
-[version-image]: https://img.shields.io/npm/v/@boilerplate-scope/boilerplate-gulp
-[version-url]: https://npmjs.org/package/@boilerplate-scope/boilerplate-gulp
+[version-image]: https://img.shields.io/npm/v/@<%= scope %>/<%= project_name %>
+[version-url]: https://npmjs.org/package/@<%= scope %>/<%= project_name %>
 
-[license-image]: https://img.shields.io/npm/l/@boilerplate-scope/boilerplate-gulp
-[license-url]: https://github.com/afeiship/boilerplate-gulp/blob/master/LICENSE.txt
+[license-image]: https://img.shields.io/npm/l/@<%= scope %>/<%= project_name %>
+[license-url]: https://github.com/afeiship/<%= project_name %>/blob/master/LICENSE.txt
 
-[size-image]: https://img.shields.io/bundlephobia/minzip/@boilerplate-scope/boilerplate-gulp
-[size-url]: https://github.com/afeiship/boilerplate-gulp/blob/master/dist/boilerplate-gulp.min.js
+[size-image]: https://img.shields.io/bundlephobia/minzip/@<%= scope %>/<%= project_name %>
+[size-url]: https://github.com/afeiship/<%= project_name %>/blob/master/dist/<%= project_name %>.min.js
 
-[download-image]: https://img.shields.io/npm/dm/@boilerplate-scope/boilerplate-gulp
-[download-url]: https://www.npmjs.com/package/@boilerplate-scope/boilerplate-gulp
+[download-image]: https://img.shields.io/npm/dm/@<%= scope %>/<%= project_name %>
+[download-url]: https://www.npmjs.com/package/@<%= scope %>/<%= project_name %>
